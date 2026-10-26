@@ -1,9 +1,43 @@
-<!-- BEGIN:nextjs-agent-rules -->
 
-## This is NOT the Next.js you know
+# Portfolio Project Instructions
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Stack
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- HeroUI v3
+- Vercel deployment
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+## Architecture
+- Routes belong in src/app/.
+- Reusable components belong in src/components/.
+- Portfolio content belongs in src/data/.
+- Shared helpers belong in src/lib/.
+- Static assets belong in public/.
+- Project documentation belongs in docs/.
 
-<!-- END:nextjs-agent-rules -->
+## Development Rules
+- Follow the approved design references.
+- Build one milestone at a time.
+- Reuse components instead of duplicating code.
+- Keep components small and maintainable.
+- Avoid unnecessary dependencies and paid services.
+- Do not invent personal details, project results, or URLs.
+- Never expose secrets or private client code.
+- Check existing files before modifying them.
+- Do not rewrite unrelated working code.
+
+## Documentation
+Update docs/PROJECT-LOG.md,
+docs/AI-PROMPTS.md, and docs/TUTORIAL.md
+when meaningful milestones are completed.
+
+Record actual commands, changes, errors,
+solutions, and test results.
+
+## Before Finishing a Task
+- Run relevant checks.
+- Report changed files.
+- Report checks that passed or failed.
+- List outstanding issues.
+- Stop after the assigned milestone.
