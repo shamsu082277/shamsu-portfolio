@@ -57,3 +57,51 @@
 
 ### Next Step
 Wait for user review and approval of design decisions before initiating Milestone 3 (Layout and core component implementation).
+
+
+---
+
+## Milestone 3: Layout and Core Components
+
+- Status: Completed
+- Focus: Site-wide foundation, design system tokens, accessible theme switching, and reusable layout components.
+
+### Commands Executed
+- `npm run lint`: Passed with 0 errors, 0 warnings.
+- `npx tsc --noEmit`: Passed with 0 type errors.
+- `npm run build`: Production build succeeded (`next build --webpack`), generating static HTML and RSC payloads for all routes (`/`, `/_not-found`, `/about`, `/blog`, `/blog/[blogId]`, `/contact`, `/education`, `/experience`, `/projects`, `/projects/[projectId]`).
+
+### Components & Modules Implemented
+- `src/app/globals.css`: Full Tailwind CSS v4-compatible CSS variable design tokens for both Dark Mode (Obsidian `#08090C`, Sky Blue `#38BDF8`, Emerald `#10B981`) and Light Mode (Crisp Slate `#F8FAFC`).
+- `src/lib/utils.ts`: Standard `cn` helper importing from `@heroui/styles` without server/client boundary conflicts, and date formatting utility.
+- `src/data/profile.ts`: Centralized site configuration, verified repository URL (`https://github.com/shamsu082277/shamsu-portfolio`), hybrid navigation links, and telemetry metadata.
+- `src/components/layout/ThemeToggle.tsx`: Accessible dark/light mode toggle utilizing HeroUI v3's built-in `useTheme` hook with React 19 `useSyncExternalStore` for hydration-safe rendering.
+- `src/components/shared/StatusBadge.tsx`: Telemetry badge with pulsing status dot and neutral default text (`Workbench v1.0 // Systems Nominal`).
+- `src/components/layout/PageContainer.tsx`: Reusable responsive layout container (`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`).
+- `src/components/shared/SectionHeader.tsx`: Semantic section heading with monospace eyebrow label, bold title, and description.
+- `src/components/layout/Navbar.tsx`: Floating sticky header with monogram, status badge, active link highlighting, ThemeToggle, Get in Touch CTA, and accessible mobile drawer with Escape key support.
+- `src/components/layout/Footer.tsx`: Semantic footer with copyright year (`useSyncExternalStore` hydration-safe pattern), navigation links, verified repository link, and tech attribution.
+- `src/app/layout.tsx`: Configured with anti-FOUC theme script, `<Suspense>` boundary around navigation, semantic landmarks, and open graph metadata.
+
+### Errors Encountered & Resolved
+1. **Empty `page.tsx` files (0 bytes)**:
+   - *Error*: `File is not a module` in TypeScript and Next.js route compilation.
+   - *Fix*: Created clean milestone pending placeholder exports in `src/app/about`, `blog`, `contact`, `education`, `experience`, `projects`.
+2. **Turbopack Webpack Loader Panic on Windows**:
+   - *Error*: Turbopack subprocess failed connecting to Node worker for `@tailwindcss/turbopack` and `reactCompiler`.
+   - *Fix*: Updated build script to `next build --webpack`, achieving clean 10-second compilation with full React Compiler and Tailwind v4 support.
+3. **HeroUI Client-Only Import in Server Components**:
+   - *Error*: `client-only cannot be imported from a Server Component module` when `utils.ts` imported `cn` from `@heroui/react`.
+   - *Fix*: Imported `cn` from `@heroui/styles` which contains pure CSS/variants and is safe for RSCs.
+4. **Unstable `new Date()` during Static Prerendering**:
+   - *Error*: Next.js 16 flagged dynamic date evaluation in `Footer.tsx` during prerender.
+   - *Fix*: Leveraged React 19 `useSyncExternalStore` returning a stable SSR snapshot and dynamic client snapshot.
+5. **Dynamic `usePathname()` in Root Layout**:
+   - *Error*: Blocked partial prerender for dynamic route segments (`/blog/[blogId]`).
+   - *Fix*: Wrapped `<Navbar />` inside a `<Suspense>` fallback boundary in `src/app/layout.tsx`.
+6. **React Compiler ESLint Warnings (`set-state-in-effect`)**:
+   - *Error*: `Avoid calling setState() directly within an effect` in `Navbar.tsx` and `ThemeToggle.tsx`.
+   - *Fix*: Handled route state during render and used `useSyncExternalStore` for mount detection.
+
+### Next Step
+Wait for user review and approval before proceeding to Milestone 4 (Homepage Hero & Core Sections).

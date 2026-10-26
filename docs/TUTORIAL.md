@@ -65,23 +65,47 @@ We synthesized these findings into an original concept: **"The Engineering Workb
 
 *Full details and token specifications are documented in [DESIGN-DECISIONS.md](./DESIGN-DECISIONS.md).*
 
-## 7. Implementing the Pages
-*(Upcoming Milestone: Layout, Navbar, Hero, Bento Projects, Skills Radar, FAQ, and Contact)*
+## 7. Implementing the Layout and Core Components
+In this milestone, we established the site-wide architecture, reusable components, and theme engine before building individual page contents:
 
-## 8. Testing & Quality Assurance
+### 1. Tailwind CSS v4 & HeroUI v3 Layered Variables
+In Tailwind CSS v4, theme tokens are declared directly in CSS via `@layer base` and `@theme`. We configured CSS variables for both dark mode (default) and light mode:
+- **Dark Mode**: Obsidian `#08090C`, Elevated Surface `#161B24`, Sky Blue `#38BDF8`, Terminal Emerald `#10B981`.
+- **Light Mode**: High-clarity Slate `#F8FAFC`, Secondary `#FFFFFF`, Muted `#64748B`.
+- Variables map seamlessly to HeroUI v3's internal tokens (`--background`, `--foreground`, `--surface`, `--accent`, `--success`), ensuring all components inherit the theme automatically.
+
+### 2. Zero-FOUC Theme Switching with HeroUI v3
+HeroUI v3 provides a native `useTheme` hook that syncs with `localStorage` (key: `"heroui-theme"`) and the DOM `data-theme` and `classList`. To eliminate Flash of Unstyled Content (FOUC), we injected an inline script in `src/app/layout.tsx` that evaluates the stored preference before the browser paints. We paired this with React 19's `useSyncExternalStore` in `ThemeToggle.tsx` to prevent hydration mismatches and eliminate cascading `useEffect` renders.
+
+### 3. Core Reusable Layout Components
+- **`Navbar`**: Floating, sticky glassmorphic navigation header featuring a portfolio monogram badge (`SU`), live status telemetry indicator, hybrid anchor and dedicated page links, active link highlighting, `ThemeToggle`, primary CTA button, and an accessible mobile drawer with keyboard `Escape` closing.
+- **`Footer`**: Semantic footer providing verified links to GitHub, internal anchors, dynamic copyright year via `useSyncExternalStore`, and technology attribution.
+- **`PageContainer`**: Centralized layout wrapper (`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`) preventing horizontal overflow and ensuring consistent layout margins.
+- **`SectionHeader`**: Consistent section header with monospace terminal eyebrow tag (`//`), prominent heading, and description text.
+- **`StatusBadge`**: Configurable telemetry pill with animated pulsing dot and customizable status/detail labels.
+
+## 8. Implementing the Page Sections
+*(Upcoming Milestone 4: Hero Section, Engineering Principles, Projects Bento Grid, Skills Radar, FAQ, and Contact)*
+
+## 9. Testing & Quality Assurance
 *(Upcoming Milestone: Automated linting, accessibility audit with axe/Lighthouse, responsive testing)*
 
-## 9. Publishing to GitHub
+## 10. Publishing to GitHub
 *(Upcoming Milestone: Git commits, branch management, and repository setup)*
 
-## 10. Deploying to Vercel
+## 11. Deploying to Vercel
 *(Upcoming Milestone: Continuous deployment via Vercel GitHub integration)*
 
-## 11. Troubleshooting & Common Pitfalls
+## 12. Troubleshooting & Common Pitfalls
 * **Network Sandbox Restrictions during Reference Research**:
   * *Issue*: Outbound terminal requests (`curl`) were blocked by environment network isolation.
   * *Solution*: Leveraged public search indices, package metadata, and developer registries to analyze references accurately without inventing facts.
-
-## 12. Lessons Learned
-* **Benchmarking Before Coding**: Spending time analyzing real-world developer portfolios helps identify both visual strengths (what looks distinct and polished) and functional strengths (what actually convinces recruiters and clients to hire you).
-* **Separation of Design from Implementation**: Locking down design tokens, component architecture, and copy structures in documentation before touching UI code prevents costly rewrites and inconsistency.
+* **Server/Client Component Boundaries with `@heroui/react`**:
+  * *Issue*: `@heroui/react` exports components built on React Aria that declare `'client-only'`. Importing utilities like `cn` from `@heroui/react` in Server Components causes a build error.
+  * *Solution*: Import `cn` from `@heroui/styles` which is a pure utility package safe for Server Components.
+* **Partial Prerendering with URL and Time Dependencies**:
+  * *Issue*: Next.js 16 Partial Prerendering flags `usePathname()` in layouts outside `<Suspense>` and dynamic `new Date()` calls.
+  * *Solution*: Wrapped `<Navbar />` inside a `<Suspense>` fallback, and utilized `useSyncExternalStore` for SSR-safe dynamic year calculation.
+* **React Compiler `set-state-in-effect` Warnings**:
+  * *Issue*: Calling `setState` synchronously inside `useEffect` triggers React Compiler performance lint errors.
+  * *Solution*: Managed route-change state during render and used `useSyncExternalStore` for mount detection.

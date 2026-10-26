@@ -264,8 +264,14 @@ src/components/
 
 ---
 
-## 8. Summary of Open Questions for User Approval
+## 8. Approved Design Decisions & Implementation Status
 
-1. **Monochrome vs. Accent Tint**: Do you prefer the primary neon accent to be **Electric Sky Blue (`#38BDF8`)** or **Terminal Emerald (`#10B981`)**?
-2. **Single-Page vs. Multi-Page**: Should the portfolio be primarily a **rich single-page app with smooth scroll anchors** (matching Nishchay, Manav, and Zalt), with dedicated subpages only for long-form case studies and blog posts? Or do you prefer strict multi-page routing (`/projects`, `/about`, `/contact`)?
-3. **HeroUI Theme Mode**: Would you like the portfolio to be **exclusively Dark Mode** (recommended to achieve the Manav Lab aesthetic), or do you require a Dark/Light mode toggle?
+The user approved the following architectural choices for Milestone 3 implementation:
+
+1. **Concept**: **The Engineering Workbench** — blending high-tech precision from Manav Portfolio Lab with structured engineering credibility and recruiter-readiness from Cyntax.
+2. **Primary Accent**: **Electric Sky Blue (`#38BDF8`)** — high-contrast interaction states and primary calls to action.
+3. **Secondary Accent**: **Terminal Emerald (`#10B981`)** — live telemetry status pills and operational indicators.
+4. **Base Background**: **Obsidian Dark (`#08090C`)** — default theme, complemented by a complete high-clarity Light Mode (`#F8FAFC`).
+5. **Theme Mechanism**: **Dark / Light Mode Toggle** powered by HeroUI v3's built-in `useTheme` hook with an anti-FOUC inline script in root layout.
+6. **Architecture**: **Hybrid** — single-page anchor navigation on the homepage (`/#about`, `/#skills`, `/#experience`, `/#faq`, `/#contact`) paired with dedicated routes for `/projects` and `/blog`.
+
