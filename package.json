@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cmd /c \"set NEXT_CPU_COUNT=1&& next build --webpack\"",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
