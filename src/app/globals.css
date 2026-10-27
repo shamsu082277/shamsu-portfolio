@@ -1,104 +1,51 @@
 @import "tailwindcss";
-@import "@heroui/styles";
 
 @layer base {
-  :root,
-  .light,
-  [data-theme="light"] {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #ffffff;
-    --bg-elevated: #f1f5f9;
-    --text-primary: #0f172a;
-    --text-muted: #64748b;
-    --border-subtle: rgba(15, 23, 42, 0.08);
-    --border-highlight: rgba(14, 165, 233, 0.35);
-    --accent-sky: #0284c7;
-    --accent-sky-hover: #0369a1;
-    --accent-sky-foreground: #ffffff;
-    --accent-emerald: #059669;
-    --accent-emerald-foreground: #ffffff;
-    --focus-ring: #0284c7;
-
-    /* HeroUI variable overrides for light theme */
-    --background: var(--bg-primary);
-    --foreground: var(--text-primary);
-    --surface: var(--bg-secondary);
-    --surface-secondary: var(--bg-elevated);
-    --muted: var(--text-muted);
-    --accent: var(--accent-sky);
-    --accent-foreground: var(--accent-sky-foreground);
-    --success: var(--accent-emerald);
-  }
-
-  .dark,
-  [data-theme="dark"] {
-    --bg-primary: #08090c;
-    --bg-secondary: #0f1218;
-    --bg-elevated: #161b24;
-    --text-primary: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-highlight: rgba(56, 189, 248, 0.35);
-    --accent-sky: #38bdf8;
-    --accent-sky-hover: #7dd3fc;
-    --accent-sky-foreground: #08090c;
+  :root {
+    --bg-navy-dark: #0a0f1d;
+    --bg-navy-card: #111a2e;
+    --bg-navy-elevated: #16223b;
     --accent-emerald: #10b981;
-    --accent-emerald-foreground: #08090c;
-    --focus-ring: #38bdf8;
-
-    /* HeroUI variable overrides for dark theme */
-    --background: var(--bg-primary);
-    --foreground: var(--text-primary);
-    --surface: var(--bg-secondary);
-    --surface-secondary: var(--bg-elevated);
-    --muted: var(--text-muted);
-    --accent: var(--accent-sky);
-    --accent-foreground: var(--accent-sky-foreground);
-    --success: var(--accent-emerald);
-  }
-
-  * {
-    border-color: var(--border-subtle);
+    --accent-teal: #14b8a6;
+    --accent-mint: #34d399;
+    --text-white: #ffffff;
+    --text-slate: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(16, 185, 129, 0.25);
   }
 
   html {
     scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+    color-scheme: dark;
   }
 
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: #0a0f1d;
+    color: #cbd5e1;
+    font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
     min-height: 100vh;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    overflow-x: hidden;
   }
-}
 
-@theme {
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-text-primary: var(--text-primary);
-  --color-text-muted: var(--text-muted);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-highlight: var(--border-highlight);
-  --color-accent-sky: var(--accent-sky);
-  --color-accent-sky-hover: var(--accent-sky-hover);
-  --color-accent-emerald: var(--accent-emerald);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0f1d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f293d;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+  }
+
+  /* Accessible focus rings */
+  :focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+  }
 }

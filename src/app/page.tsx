@@ -1,55 +1,49 @@
-"use client";
-
-import Link from "next/link";
-import { Button } from "@heroui/react";
-import { PageContainer } from "@/components/layout/PageContainer";
-import { StatusBadge } from "@/components/shared/StatusBadge";
-import { SectionHeader } from "@/components/shared/SectionHeader";
-import { siteConfig } from "@/data/profile";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Services } from "@/components/Services";
+import { Skills } from "@/components/Skills";
+import { Experience } from "@/components/Experience";
+import { Projects } from "@/components/Projects";
+import { Education } from "@/components/Education";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="py-20 md:py-28">
-      <PageContainer>
-        <div className="flex flex-col items-center text-center space-y-8 max-w-3xl mx-auto">
-          {/* Telemetry Badge */}
-          <StatusBadge status={siteConfig.status.label} detail={siteConfig.status.detail} />
+    <div className="min-h-screen flex flex-col bg-[#0a0f1d] text-[#cbd5e1] selection:bg-emerald-500/30 selection:text-emerald-300">
+      {/* 1. Navbar with Section Anchors & Direct Contact CTA */}
+      <Navbar />
 
-          {/* Section Header Preview */}
-          <SectionHeader
-            align="center"
-            eyebrow="ENGINEERING WORKBENCH"
-            title="Building typed, scalable systems with architectural discipline."
-            description="Personal developer portfolio exploring modern full-stack engineering, performance optimization, and clean software architecture."
-          />
+      {/* Main Single-Page Content Pipeline */}
+      <main className="flex-1 w-full">
+        {/* 2. Hero Section with Side-by-Side Bio & Professional Photo */}
+        <Hero />
 
-          {/* Core Layout Actions */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Link href="/projects">
-              <Button
-                size="md"
-                className="bg-accent-sky text-accent-sky-foreground hover:bg-accent-sky-hover font-medium px-6"
-              >
-                Explore Projects
-              </Button>
-            </Link>
-            <Link href="/#contact">
-              <Button
-                size="md"
-                variant="outline"
-                className="border-border-subtle hover:bg-bg-elevated text-text-primary font-medium px-6"
-              >
-                Get in Touch
-              </Button>
-            </Link>
-          </div>
+        {/* 3. About Me */}
+        <About />
 
-          {/* Milestone Note */}
-          <div className="mt-8 p-4 rounded-xl border border-border-subtle bg-bg-secondary/60 text-xs font-mono text-text-muted max-w-md">
-            <span>[MILESTONE 3 FOUNDATION ACTIVE] Layout, Theme Engine & Design Tokens Established.</span>
-          </div>
-        </div>
-      </PageContainer>
+        {/* 4. Services Offered (WordPress, WooCommerce, Frontend, Speed Optimization, etc.) */}
+        <Services />
+
+        {/* 5. Technical Skills Categorized Badges */}
+        <Skills />
+
+        {/* 6. Professional Work Experience Timeline */}
+        <Experience />
+
+        {/* 7. Selected Projects with Live Links & On-Page Detail Modal */}
+        <Projects />
+
+        {/* 8. Education Timeline */}
+        <Education />
+
+        {/* 9. Let's Work Together & Contact Section */}
+        <Contact />
+      </main>
+
+      {/* 10. Simple Semantic Footer */}
+      <Footer />
     </div>
   );
 }

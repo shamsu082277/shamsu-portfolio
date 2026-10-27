@@ -3,46 +3,55 @@ export interface ExperienceItem {
   role: string;
   organization: string;
   period: string;
-  location: string;
-  type: "Full-Time" | "Contract" | "Independent / Training" | "Project-Based";
   description: string;
   responsibilities: string[];
-  technologies: string[];
+  skills: string[];
 }
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: "full-stack-developer",
-    role: "Full-Stack Web Developer",
-    organization: "Independent & Open Source Projects",
-    period: "2024 — Present",
-    location: "Bangladesh (Remote)",
-    type: "Project-Based",
+    id: "web-dev-trainer",
+    role: "Web Development Trainer",
+    organization: "STS IT Training Institute & Infosys",
+    period: "Professional Training",
     description:
-      "Engineering full-stack web applications with modern TypeScript, Next.js App Router, React, and Tailwind CSS. Specializing in responsive frontends, clean architecture, and localized consumer applications.",
+      "Delivering structured web development instruction, mentoring emerging developers, and simplifying complex technical principles into actionable, practical skills.",
     responsibilities: [
-      "Architected and deployed 'The Engineering Workbench' portfolio with custom design tokens and zero-FOUC theme switching.",
-      "Engineered 'BazarDor', a localized grocery and commodity market price monitoring web application.",
-      "Developed 'Dev-Stack', a categorized developer resource hub for modern web technology stacks.",
-      "Implemented accessibility best practices (WCAG AA) including keyboard navigability and high-contrast color systems.",
+      "Deliver comprehensive web development training sessions and explain technical concepts clearly.",
+      "Teach and guide learners to improve their practical web development and coding skills.",
+      "Conduct hands-on workshops covering HTML, CSS, JavaScript, responsive layouts, and CMS tools.",
+      "Review student projects, troubleshoot coding problems, and offer constructive architectural feedback.",
     ],
-    technologies: ["Next.js", "TypeScript", "React", "Tailwind CSS", "HeroUI", "Node.js", "MongoDB", "Git"],
+    skills: ["Web Development Training", "HTML/CSS", "JavaScript", "Curriculum Mentorship", "Technical Communication"],
   },
   {
-    id: "web-dev-training",
-    role: "Full-Stack Web Development Fellow",
-    organization: "Programming Hero",
-    period: "2023 — 2024",
-    location: "Remote",
-    type: "Independent / Training",
+    id: "diconlogy",
+    role: "Web Development & Project Coordination",
+    organization: "DiConLogy",
+    period: "Agency & Client Projects",
     description:
-      "Intensive software engineering curriculum covering modern frontend and backend development with JavaScript, TypeScript, React, Node.js, Express, and MongoDB.",
+      "Contributing to agency web development deliverables, coordinating cross-functional project requirements, and overseeing website deployment quality.",
     responsibilities: [
-      "Completed hands-on assignments building dynamic single-page applications and full-stack web platforms.",
-      "Mastered React component architecture, state management, custom hooks, and RESTful API integration.",
-      "Implemented backend services with Express and MongoDB, handling CRUD operations and database schemas.",
-      "Participated in peer code reviews, debugging sessions, and git collaboration workflows.",
+      "Contribute directly to client website development, layout customization, and maintenance.",
+      "Coordinate project tasks, milestones, and deliverables to ensure on-time delivery.",
+      "Ensure web interfaces adhere to responsive design standards and client specifications.",
+      "Troubleshoot front-end and CMS configuration issues across multiple client accounts.",
     ],
-    technologies: ["JavaScript (ES6+)", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Git"],
+    skills: ["WordPress", "Project Coordination", "Web Development", "Client Communication", "Quality Assurance"],
+  },
+  {
+    id: "freelance-developer",
+    role: "Freelance Web Developer & Designer",
+    organization: "Freelance / Global Clients",
+    period: "Ongoing Practice",
+    description:
+      "Partnering directly with business owners, entrepreneurs, and service providers worldwide to build, customize, and optimize high-performing websites.",
+    responsibilities: [
+      "Design and develop custom websites for businesses, e-commerce stores, personal brands, and service providers.",
+      "Build, customize, maintain, and refine websites according to exact client specifications.",
+      "Implement WooCommerce stores with customized product flows, carts, and payment integrations.",
+      "Perform website speed optimization, diagnostic troubleshooting, and regular security updates.",
+    ],
+    skills: ["WordPress", "WooCommerce", "Elementor", "Responsive Web Design", "Speed Optimization", "Client Support"],
   },
 ];

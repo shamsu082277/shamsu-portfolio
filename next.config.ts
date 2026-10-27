@@ -1,18 +1,10 @@
 import type { NextConfig } from "next";
 
+// Prevent worker concurrency file lock collisions on Windows during prerender
+process.env.NEXT_CPU_COUNT = "1";
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
-  reactCompiler: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+  /* Clean standard Next.js config */
 };
 
 export default nextConfig;

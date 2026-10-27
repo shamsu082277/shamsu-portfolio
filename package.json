@@ -4,18 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "cmd /c \"set NEXT_CPU_COUNT=1&& next build --webpack\"",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
-    "@heroui/react": "^3.2.6",
-    "@heroui/styles": "^3.2.6",
     "next": "16.4.3",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -23,6 +22,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

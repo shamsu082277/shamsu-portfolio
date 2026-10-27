@@ -9,27 +9,27 @@ export interface EducationItem {
 
 export const educationData: EducationItem[] = [
   {
-    id: "programming-hero",
-    degree: "Complete Web Development Certificate",
-    institution: "Programming Hero",
-    period: "2023 — 2024",
-    location: "Online / Remote",
+    id: "bsc-physics",
+    degree: "Bachelor of Science (Honours) in Physics",
+    institution: "National University Bangladesh — Narsingdi Government College",
+    period: "Exam 2024 (Published 2026)",
+    location: "Bangladesh",
     highlights: [
-      "Rigorous program covering modern frontend, backend, and full-stack software development.",
-      "Comprehensive training in HTML5, CSS3, JavaScript (ES6+), React, Node.js, Express, and MongoDB.",
-      "Hands-on project deliverables including e-commerce interfaces, price trackers, and interactive dashboards.",
-      "Emphasis on clean code, git collaboration, debugging, and production deployments.",
+      "Rigorous academic study focusing on physics, mathematics, analytical reasoning, and scientific inquiry.",
+      "Developed systematic problem-solving habits, logical thinking, and attention to detail.",
+      "Applied quantitative analysis and empirical experimentation methodologies to complex technical domains.",
     ],
   },
   {
-    id: "academic-studies",
-    degree: "Higher Secondary & General Academic Studies",
-    institution: "Formal Academic Education",
-    period: "Completed",
-    location: "Bangladesh",
+    id: "web-dev-cert",
+    degree: "Professional Web Development Training",
+    institution: "Web Development Fellowship & Practical Curriculum",
+    period: "Comprehensive Training",
+    location: "Online / Practical",
     highlights: [
-      "Strong foundational focus in science, mathematics, analytical reasoning, and computer fundamentals.",
-      "Developed problem-solving methodology and technical self-learning discipline.",
+      "Intensive practical training covering modern web technologies: HTML5, CSS3, JavaScript (ES6+), React, and Node.js.",
+      "Hands-on building of dynamic web applications, e-commerce stores, and responsive user interfaces.",
+      "Focus on clean code, Git version control, website maintenance, and performance optimization.",
     ],
   },
 ];
