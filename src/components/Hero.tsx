@@ -1,17 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { profileData } from "@/data/profile";
 
 export function Hero() {
-  const [resumeNotice, setResumeNotice] = useState(false);
-
-  const handleResumeClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setResumeNotice(true);
-    setTimeout(() => setResumeNotice(false), 5000);
-  };
 
   return (
     <section
@@ -72,32 +64,32 @@ export function Hero() {
                 <span>Let&apos;s Work Together</span>
               </a>
 
-              {/* Resume Button */}
-              <button
-                type="button"
-                onClick={handleResumeClick}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white font-mono text-sm transition-all duration-200"
-                aria-label="Download or request resume"
+              {/* Direct Resume Download Button */}
+              <a
+                href="/resume.pdf"
+                download="Shamsu_Uddin_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/40 text-slate-300 hover:text-white font-mono text-sm transition-all duration-200 shadow-sm"
+                aria-label="Download Shamsu Uddin's Resume (PDF)"
               >
                 <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span>Resume</span>
-              </button>
+                <span>Download Resume</span>
+              </a>
             </div>
 
-            {/* Resume Toast Alert */}
-            {resumeNotice && (
-              <div className="p-3.5 bg-emerald-950/90 border border-emerald-500/40 rounded-xl text-xs font-mono text-emerald-200 max-w-lg mx-auto lg:mx-0">
-                📄 Verified resume available upon request:{" "}
-                <a
-                  href={`mailto:${profileData.links.email}?subject=Resume%20Request%20-%20Shamsu%20Uddin`}
-                  className="underline text-emerald-400 font-bold hover:text-white"
-                >
-                  {profileData.links.email}
-                </a>
-              </div>
-            )}
+            {/* Direct Email Fallback Note */}
+            <p className="text-xs font-mono text-slate-400 pt-1">
+              Need an updated copy or having trouble downloading? Email me directly at{" "}
+              <a
+                href={`mailto:${profileData.links.email}?subject=Resume%20Inquiry%20-%20Shamsu%20Uddin`}
+                className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors"
+              >
+                {profileData.links.email}
+              </a>
+            </p>
 
             {/* Verified Social Profile Links */}
             <div className="flex items-center justify-center lg:justify-start gap-3 pt-3 text-slate-400">
